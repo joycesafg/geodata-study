@@ -46,7 +46,7 @@ repos:
     hooks:
       - id: black
         name: Black Code Formatter
-        language_version: python3.10
+        language_version: python3.12
 
   # MyPy - Type checking
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -76,13 +76,13 @@ repos:
           "--cov-report=term-missing:skip-covered",
           "--cov-fail-under=0",  # Não falha por cobertura baixa, mas mostra o relatório
         ]
-        stages: [commit]
+        stages: [pre-commit]
 
 # Configuração global
 default_language_version:
-  python: python3.10
+  python: python3.12
 
 # Executa os hooks em paralelo para maior velocidade
-default_stages: [commit]
+default_stages: [pre-commit]
 fail_fast: false  # Continua mesmo se um hook falhar, para ver todos os problemas
 

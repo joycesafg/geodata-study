@@ -256,7 +256,7 @@ def get_feature_bounds(feature: dict[str, Any]) -> tuple[float, float, float, fl
             return []
 
         # Se é uma coordenada [lon, lat]
-        if isinstance(coords[0], (int, float)):
+        if isinstance(coords[0], int | float):
             return [coords]
 
         # Se é lista de coordenadas
