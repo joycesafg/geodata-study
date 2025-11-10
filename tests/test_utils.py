@@ -2,6 +2,8 @@
 Testes para o módulo utils.py
 """
 
+from typing import Any
+
 import pytest
 
 from src.geodata_br_mcp.utils import (

@@ -47,4 +47,3 @@ echo "   - pre-commit autoupdate       : Atualiza as versões dos hooks"
 echo "   - pre-commit uninstall        : Remove os hooks do git"
 echo ""
 echo "🎉 Agora os hooks serão executados automaticamente antes de cada commit!"
-

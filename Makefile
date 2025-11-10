@@ -58,4 +58,3 @@ server: ## Inicia o servidor MCP
 	python main.py
 
 .DEFAULT_GOAL := help
-

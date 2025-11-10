@@ -42,7 +42,7 @@ dos municípios brasileiros dividido por estado
 
 
 ### Região Centro-Oeste
-* DF / Distrito Federal - [geojson/geojs-53-mun.json](geojson/geojs-53-mun.json) 
+* DF / Distrito Federal - [geojson/geojs-53-mun.json](geojson/geojs-53-mun.json)
 * GO / Goiás - [geojson/geojs-52-mun.json](geojson/geojs-52-mun.json)
 * MT / Mato Grosso - [geojson/geojs-51-mun.json](geojson/geojs-51-mun.json)
 * MS / Mato Grosso do Sul - [geojson/geojs-50-mun.json](geojson/geojs-50-mun.json)
@@ -132,7 +132,7 @@ Creative Commons [CC0 1.0 Universal](https://creativecommons.org/publicdomain/ze
 
 
 Projetos relacionados
---------------------- 
+---------------------
 * https://github.com/fititnt/gis-dataset-brasil
 * https://github.com/carolinabigonha/br-atlas
 * https://github.com/luizpedone/municipal-brazilian-geodata

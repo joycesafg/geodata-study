@@ -165,7 +165,7 @@ A região Nordeste tem aproximadamente 50% mais municípios que a região Sul.
 
 **Resposta esperada:**
 ```
-Encontrei Brasília (código IBGE: 5300108), capital do Brasil, 
+Encontrei Brasília (código IBGE: 5300108), capital do Brasil,
 localizada no Distrito Federal.
 
 [GeoJSON retornado]
@@ -227,7 +227,7 @@ Encontrei 51 municípios em São Paulo que começam com "São":
 
 **Resposta esperada:**
 ```
-O código IBGE 9999999 não é válido. Os dois primeiros dígitos (99) 
+O código IBGE 9999999 não é válido. Os dois primeiros dígitos (99)
 não correspondem a nenhum estado brasileiro.
 ```
 
@@ -241,7 +241,7 @@ não correspondem a nenhum estado brasileiro.
 
 **Conversa:**
 ```
-Você: "Preciso criar um mapa coroplético de São Paulo mostrando população por município. 
+Você: "Preciso criar um mapa coroplético de São Paulo mostrando população por município.
       Me ajude a obter os dados geográficos."
 
 Claude: "Vou buscar os dados dos municípios de São Paulo para você."
@@ -250,8 +250,8 @@ Claude: "Vou buscar os dados dos municípios de São Paulo para você."
 Claude: "São Paulo tem 645 municípios. Para o mapa coroplético, você precisará:
         1. Os GeoJSONs dos municípios (que posso fornecer)
         2. Dados de população (de outra fonte)
-        
-        Quer que eu busque os GeoJSONs de alguns municípios específicos ou prefere 
+
+        Quer que eu busque os GeoJSONs de alguns municípios específicos ou prefere
         trabalhar com a lista completa?"
 
 Você: "Me dê os GeoJSONs das 10 maiores cidades"
@@ -269,14 +269,14 @@ Claude: [Busca os GeoJSONs de São Paulo, Guarulhos, Campinas, etc.]
 ```
 Você: "Quais municípios fazem fronteira com Campinas?"
 
-Claude: "Para determinar isso, vou precisar dos dados geográficos de Campinas 
+Claude: "Para determinar isso, vou precisar dos dados geográficos de Campinas
         e dos municípios ao redor."
 [Usa get_municipality_geojson("SP", "Campinas")]
 
 Claude: "Campinas tem estas coordenadas como limites:
         [analisa o polígono]
-        
-        Para identificar os vizinhos com precisão, seria necessário analisar 
+
+        Para identificar os vizinhos com precisão, seria necessário analisar
         todos os 645 municípios de SP e verificar quais compartilham fronteiras.
         Quer que eu liste os municípios próximos a Campinas para você verificar?"
 ```
@@ -293,11 +293,11 @@ Claude: "Campinas tem estas coordenadas como limites:
 ```
 Você: "Em qual município está o ponto [-46.633, -23.550]?"
 
-Claude: "Essas coordenadas estão próximas à região de São Paulo. Vou verificar os 
+Claude: "Essas coordenadas estão próximas à região de São Paulo. Vou verificar os
         limites dos municípios dessa área."
 [Usa get_municipality_geojson para municípios candidatos]
 
-Claude: "O ponto [-46.633, -23.550] está dentro dos limites do município de 
+Claude: "O ponto [-46.633, -23.550] está dentro dos limites do município de
         São Paulo (capital)."
 ```
 
@@ -317,7 +317,7 @@ Claude: "Vou buscar todos os municípios do Paraná para você."
 [Usa list_municipalities("PR")]
 
 Claude: "O Paraná tem 399 municípios. Como você prefere receber os dados?
-        
+
         Opção 1: Um arquivo único com todos os municípios (FeatureCollection)
         Opção 2: Arquivos individuais por município
         Opção 3: Lista de códigos IBGE para você processar externamente"
@@ -342,13 +342,13 @@ Você: "Existem municípios chamados 'Santa Maria' no Brasil?"
 Claude: [Busca em vários estados]
 
 Claude: "Encontrei 5 municípios chamados 'Santa Maria':
-        
+
         1. Santa Maria (RS) - 4316907
         2. Santa Maria (RN) - 2411205
         3. Santa Maria da Boa Vista (PE) - 2612554
         4. Santa Maria da Vitória (BA) - 2928109
         5. Santa Maria das Barreiras (PA) - 1506500
-        
+
         Qual deles você gostaria de obter mais informações?"
 ```
 
@@ -418,4 +418,3 @@ R: Os dados vêm do IBGE e têm precisão adequada para a maioria dos usos. Para
 ---
 
 **Tem mais exemplos ou casos de uso? Contribua com o projeto!** 🚀
-

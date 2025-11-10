@@ -255,4 +255,3 @@ Se tiver problemas:
 ---
 
 **Desenvolvido com ❤️ para a comunidade brasileira de dados geográficos**
-

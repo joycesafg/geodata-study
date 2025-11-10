@@ -86,7 +86,7 @@ repos:
           "--cov-report=term-missing:skip-covered",
           "--cov-fail-under=80",  # Requer 80% de cobertura
         ]
-        stages: [commit]
+        stages: [pre-commit]
 
 # Configuração global
 default_language_version:
@@ -95,4 +95,3 @@ default_language_version:
 # Executa os hooks em paralelo para maior velocidade
 default_stages: [pre-commit]
 fail_fast: false  # Continua mesmo se um hook falhar, para ver todos os problemas
-
