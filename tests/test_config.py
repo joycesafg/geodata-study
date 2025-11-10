@@ -3,18 +3,19 @@ Testes para o módulo config.py
 """
 
 import pytest
+
 from src.geodata_br_mcp.config import (
     IBGE_TO_STATE,
     STATE_TO_IBGE,
     STATES_BY_REGION,
-    validate_uf,
-    validate_ibge_code,
+    get_all_states,
+    get_filename_for_state,
     get_state_code,
     get_state_info,
     get_states_by_region,
-    get_filename_for_state,
-    get_all_states,
     get_total_states,
+    validate_ibge_code,
+    validate_uf,
 )
 
 
@@ -142,4 +143,3 @@ class TestStateFunctions:
     def test_get_total_states(self):
         """Testa contar total de estados (excluindo Brasil)."""
         assert get_total_states() == 27  # Exclui o código 100 (Brasil)
-

@@ -2,8 +2,9 @@
 Configuração de fixtures e setup para pytest.
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 @pytest.fixture
@@ -26,11 +27,7 @@ def sample_geojson():
         "features": [
             {
                 "type": "Feature",
-                "properties": {
-                    "id": "3550308",
-                    "name": "São Paulo",
-                    "description": "São Paulo"
-                },
+                "properties": {"id": "3550308", "name": "São Paulo", "description": "São Paulo"},
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
@@ -38,18 +35,14 @@ def sample_geojson():
                             [-46.826, -24.008],
                             [-46.365, -23.548],
                             [-46.365, -23.979],
-                            [-46.826, -24.008]
+                            [-46.826, -24.008],
                         ]
-                    ]
-                }
+                    ],
+                },
             },
             {
                 "type": "Feature",
-                "properties": {
-                    "id": "3509502",
-                    "name": "Campinas",
-                    "description": "Campinas"
-                },
+                "properties": {"id": "3509502", "name": "Campinas", "description": "Campinas"},
                 "geometry": {
                     "type": "Polygon",
                     "coordinates": [
@@ -57,11 +50,10 @@ def sample_geojson():
                             [-47.247, -22.731],
                             [-46.873, -22.690],
                             [-46.873, -23.120],
-                            [-47.247, -22.731]
+                            [-47.247, -22.731],
                         ]
-                    ]
-                }
-            }
-        ]
+                    ],
+                },
+            },
+        ],
     }
-

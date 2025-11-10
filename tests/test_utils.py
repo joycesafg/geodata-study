@@ -3,19 +3,19 @@ Testes para o módulo utils.py
 """
 
 import pytest
-from pathlib import Path
+
 from src.geodata_br_mcp.utils import (
-    normalize_text,
-    search_features_by_name,
-    search_features_by_ibge,
-    filter_features_by_pattern,
-    extract_municipality_names,
-    extract_municipality_ids,
-    validate_geojson_structure,
-    count_features,
-    get_geojson_summary,
     clear_cache,
+    count_features,
+    extract_municipality_ids,
+    extract_municipality_names,
+    filter_features_by_pattern,
     get_cache_size,
+    get_geojson_summary,
+    normalize_text,
+    search_features_by_ibge,
+    search_features_by_name,
+    validate_geojson_structure,
 )
 
 
@@ -51,31 +51,23 @@ class TestFeatureSearch:
         return [
             {
                 "type": "Feature",
-                "properties": {
-                    "id": "3550308",
-                    "name": "São Paulo",
-                    "description": "São Paulo"
-                },
-                "geometry": {"type": "Point", "coordinates": [-46.633, -23.550]}
+                "properties": {"id": "3550308", "name": "São Paulo", "description": "São Paulo"},
+                "geometry": {"type": "Point", "coordinates": [-46.633, -23.550]},
             },
             {
                 "type": "Feature",
-                "properties": {
-                    "id": "3509502",
-                    "name": "Campinas",
-                    "description": "Campinas"
-                },
-                "geometry": {"type": "Point", "coordinates": [-47.060, -22.905]}
+                "properties": {"id": "3509502", "name": "Campinas", "description": "Campinas"},
+                "geometry": {"type": "Point", "coordinates": [-47.060, -22.905]},
             },
             {
                 "type": "Feature",
                 "properties": {
                     "id": "3548708",
                     "name": "São Bernardo do Campo",
-                    "description": "São Bernardo do Campo"
+                    "description": "São Bernardo do Campo",
                 },
-                "geometry": {"type": "Point", "coordinates": [-46.565, -23.691]}
-            }
+                "geometry": {"type": "Point", "coordinates": [-46.565, -23.691]},
+            },
         ]
 
     def test_search_features_by_name_exact(self, sample_features):
@@ -122,13 +114,13 @@ class TestFeatureExtraction:
             {
                 "type": "Feature",
                 "properties": {"id": "3550308", "name": "São Paulo"},
-                "geometry": {}
+                "geometry": {},
             },
             {
                 "type": "Feature",
                 "properties": {"id": "3509502", "name": "Campinas"},
-                "geometry": {}
-            }
+                "geometry": {},
+            },
         ]
 
     def test_extract_municipality_names(self, sample_features):
@@ -151,10 +143,7 @@ class TestGeoJSONValidation:
 
     def test_validate_feature_collection(self):
         """Testa validação de FeatureCollection."""
-        data = {
-            "type": "FeatureCollection",
-            "features": []
-        }
+        data = {"type": "FeatureCollection", "features": []}
         is_valid, error = validate_geojson_structure(data)
         assert is_valid is True
         assert error is None
@@ -164,7 +153,7 @@ class TestGeoJSONValidation:
         data = {
             "type": "Feature",
             "properties": {},
-            "geometry": {"type": "Point", "coordinates": [0, 0]}
+            "geometry": {"type": "Point", "coordinates": [0, 0]},
         }
         is_valid, error = validate_geojson_structure(data)
         assert is_valid is True
@@ -172,10 +161,7 @@ class TestGeoJSONValidation:
 
     def test_validate_geometry(self):
         """Testa validação de Geometry."""
-        data = {
-            "type": "Point",
-            "coordinates": [0, 0]
-        }
+        data = {"type": "Point", "coordinates": [0, 0]}
         is_valid, error = validate_geojson_structure(data)
         assert is_valid is True
         assert error is None
@@ -200,19 +186,12 @@ class TestGeoJSONAnalysis:
 
     def test_count_features_in_collection(self):
         """Testa contagem de features em FeatureCollection."""
-        data = {
-            "type": "FeatureCollection",
-            "features": [{}, {}, {}]
-        }
+        data = {"type": "FeatureCollection", "features": [{}, {}, {}]}
         assert count_features(data) == 3
 
     def test_count_features_single(self):
         """Testa contagem de feature única."""
-        data = {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {}
-        }
+        data = {"type": "Feature", "properties": {}, "geometry": {}}
         assert count_features(data) == 1
 
     def test_count_features_invalid(self):
@@ -228,9 +207,9 @@ class TestGeoJSONAnalysis:
                 {
                     "type": "Feature",
                     "properties": {"id": "123", "name": "Test"},
-                    "geometry": {"type": "Polygon", "coordinates": []}
+                    "geometry": {"type": "Polygon", "coordinates": []},
                 }
-            ]
+            ],
         }
         summary = get_geojson_summary(data)
 
@@ -256,4 +235,3 @@ class TestCache:
         size = get_cache_size()
         assert isinstance(size, int)
         assert size >= 0
-
