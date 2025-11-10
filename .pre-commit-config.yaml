@@ -65,16 +65,18 @@ repos:
           'pydantic>=2.0.0',
           'typing-extensions>=4.8.0',
           'types-requests',
+          'pytest>=7.4.0',
+          'mcp>=0.9.0',
         ]
-        args: [--config-file=pyproject.toml]
-        exclude: ^geojson/
+        args: [--config-file=pyproject.toml, --ignore-missing-imports]
+        exclude: ^(geojson/|tests/)
 
   # Pytest - Executa os testes
   - repo: local
     hooks:
       - id: pytest
         name: Pytest - Testes Unitários
-        entry: pytest
+        entry: bash -c 'python -m pytest'
         language: system
         pass_filenames: false
         always_run: true
@@ -82,9 +84,9 @@ repos:
           "-v",
           "--cov=src/geodata_br_mcp",
           "--cov-report=term-missing:skip-covered",
-          "--cov-fail-under=0",  # Não falha por cobertura baixa, mas mostra o relatório
+          "--cov-fail-under=80",  # Requer 80% de cobertura
         ]
-        stages: [pre-commit]
+        stages: [commit]
 
 # Configuração global
 default_language_version:

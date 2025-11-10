@@ -168,16 +168,18 @@ class TestGeoJSONValidation:
 
     def test_validate_invalid_missing_type(self):
         """Testa validação com type faltando."""
-        data = {"features": []}
+        data: dict[str, Any] = {"features": []}
         is_valid, error = validate_geojson_structure(data)
         assert is_valid is False
+        assert error is not None
         assert "type" in error
 
     def test_validate_invalid_feature_collection(self):
         """Testa validação de FeatureCollection inválida."""
-        data = {"type": "FeatureCollection"}
+        data: dict[str, Any] = {"type": "FeatureCollection"}
         is_valid, error = validate_geojson_structure(data)
         assert is_valid is False
+        assert error is not None
         assert "features" in error
 
 
