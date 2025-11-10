@@ -20,9 +20,10 @@ Toda vez que você faz `git commit`, executa automaticamente:
 
 - ✅ **Ruff** - Linter + formatador
 - ✅ **Black** - Formatação de código
-- ✅ **MyPy** - Verificação de tipos
-- ✅ **Pytest** - Testes unitários
+- ✅ **MyPy** - Verificação de tipos (apenas src/)
 - ✅ Validações básicas (espaços, YAML, JSON, etc)
+
+**Nota:** Os testes (Pytest) rodam no GitHub Actions CI/CD, não no pre-commit local.
 
 ## 💻 Comandos Úteis
 
@@ -41,7 +42,9 @@ pre-commit autoupdate                   # Atualiza versões
 # Commit
 git commit -m "mensagem"                # Normal (hooks automáticos)
 git commit --no-verify -m "mensagem"    # Pula hooks (emergência)
-SKIP=pytest git commit -m "mensagem"    # Pula apenas testes
+
+# Execute os testes ANTES de commitar (recomendado)
+make test  # ou: pytest -v --cov=src/geodata_br_mcp
 ```
 
 ## 🐛 Problemas Comuns
