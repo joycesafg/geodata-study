@@ -66,6 +66,7 @@ extend-exclude = '''
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+exclude = ["geojson/**"]
 
 [tool.ruff.lint]
 select = [
@@ -94,3 +95,4 @@ warn_redundant_casts = true
 warn_unused_ignores = true
 warn_no_return = true
 strict_equality = true
+exclude = ["geojson/"]

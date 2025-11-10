@@ -10,8 +10,10 @@ repos:
     hooks:
       - id: trailing-whitespace
         name: Remove espaços em branco no final das linhas
+        exclude: ^geojson/
       - id: end-of-file-fixer
         name: Garante nova linha no final dos arquivos
+        exclude: ^geojson/
       - id: check-yaml
         name: Valida arquivos YAML
       - id: check-json
@@ -19,7 +21,8 @@ repos:
         exclude: ^geojson/  # Exclui GeoJSON pois são muito grandes
       - id: check-added-large-files
         name: Previne commit de arquivos muito grandes
-        args: ['--maxkb=1000']
+        args: ['--maxkb=10000']  # Aumentado para 10MB para aceitar GeoJSON
+        exclude: ^geojson/
       - id: check-merge-conflict
         name: Verifica marcadores de conflito de merge
       - id: check-toml
@@ -29,6 +32,7 @@ repos:
       - id: mixed-line-ending
         name: Garante terminações de linha consistentes
         args: ['--fix=lf']
+        exclude: ^geojson/
 
   # Ruff - Linting e formatação rápida
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -37,8 +41,10 @@ repos:
       - id: ruff
         name: Ruff Linter
         args: [--fix, --exit-non-zero-on-fix]
+        exclude: ^geojson/
       - id: ruff-format
         name: Ruff Formatter
+        exclude: ^geojson/
 
   # Black - Formatação de código
   - repo: https://github.com/psf/black
@@ -47,6 +53,7 @@ repos:
       - id: black
         name: Black Code Formatter
         language_version: python3.12
+        exclude: ^geojson/
 
   # MyPy - Type checking
   - repo: https://github.com/pre-commit/mirrors-mypy
@@ -60,6 +67,7 @@ repos:
           'types-requests',
         ]
         args: [--config-file=pyproject.toml]
+        exclude: ^geojson/
 
   # Pytest - Executa os testes
   - repo: local
