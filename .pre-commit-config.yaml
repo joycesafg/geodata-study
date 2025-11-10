@@ -1,0 +1,88 @@
+# Configuração do Pre-commit
+# Instale com: pip install pre-commit
+# Configure com: pre-commit install
+# Execute manualmente: pre-commit run --all-files
+
+repos:
+  # Hooks básicos do pre-commit
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        name: Remove espaços em branco no final das linhas
+      - id: end-of-file-fixer
+        name: Garante nova linha no final dos arquivos
+      - id: check-yaml
+        name: Valida arquivos YAML
+      - id: check-json
+        name: Valida arquivos JSON
+        exclude: ^geojson/  # Exclui GeoJSON pois são muito grandes
+      - id: check-added-large-files
+        name: Previne commit de arquivos muito grandes
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+        name: Verifica marcadores de conflito de merge
+      - id: check-toml
+        name: Valida arquivos TOML
+      - id: debug-statements
+        name: Verifica declarações de debug (pdb, ipdb, etc)
+      - id: mixed-line-ending
+        name: Garante terminações de linha consistentes
+        args: ['--fix=lf']
+
+  # Ruff - Linting e formatação rápida
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9
+    hooks:
+      - id: ruff
+        name: Ruff Linter
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        name: Ruff Formatter
+
+  # Black - Formatação de código
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        name: Black Code Formatter
+        language_version: python3.10
+
+  # MyPy - Type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.7.1
+    hooks:
+      - id: mypy
+        name: MyPy Type Checker
+        additional_dependencies: [
+          'pydantic>=2.0.0',
+          'typing-extensions>=4.8.0',
+          'types-requests',
+        ]
+        args: [--config-file=pyproject.toml]
+
+  # Pytest - Executa os testes
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Pytest - Testes Unitários
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+        args: [
+          "-v",
+          "--cov=src/geodata_br_mcp",
+          "--cov-report=term-missing:skip-covered",
+          "--cov-fail-under=0",  # Não falha por cobertura baixa, mas mostra o relatório
+        ]
+        stages: [commit]
+
+# Configuração global
+default_language_version:
+  python: python3.10
+
+# Executa os hooks em paralelo para maior velocidade
+default_stages: [commit]
+fail_fast: false  # Continua mesmo se um hook falhar, para ver todos os problemas
+

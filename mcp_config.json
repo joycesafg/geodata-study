@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "geodata-br": {
+      "command": "python",
+      "args": [
+        "-m",
+        "src.geodata_br_mcp.server"
+      ],
+      "env": {
+        "GEODATA_BR_PATH": "/Users/74393/Documents/estudos/geodata-br"
+      }
+    }
+  }
+}
+
