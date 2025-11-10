@@ -38,7 +38,7 @@ def load_geojson_with_cache(file_path: Path) -> dict[str, Any]:
         raise FileNotFoundError(f"Arquivo não encontrado: {file_path}")
 
     with file_path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+        data: dict[str, Any] = json.load(f)
 
     # Armazena no cache
     _geojson_cache[file_str] = data

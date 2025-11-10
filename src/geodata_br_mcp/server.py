@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -122,12 +123,15 @@ def get_state_info(
 
     state_info = config_get_state_info(uf)
 
+    # Converte para dict[str, Any] para permitir diferentes tipos de valores
+    result: dict[str, Any] = dict(state_info)
+
     # Conta municípios
     if "features" in geojson_data:
-        state_info["total_municipalities"] = len(geojson_data["features"])
-        logger.info(f"Estado {uf}: {state_info['total_municipalities']} municípios")
+        result["total_municipalities"] = len(geojson_data["features"])
+        logger.info(f"Estado {uf}: {result['total_municipalities']} municípios")
 
-    return state_info
+    return result
 
 
 @app.tool()
@@ -258,7 +262,7 @@ def get_brazil_geojson() -> dict[str, Any]:
 if __name__ == "__main__":
     # Inicia o servidor MCP via stdio
     logger.info("=== Geodata-BR MCP Server Iniciando ===")
-    logger.info(f"Python Path: {os.sys.executable}")
+    logger.info(f"Python Path: {sys.executable}")
     logger.info(f"DATA_ROOT: {DATA_ROOT}")
     logger.info("Versão: 0.1.0")
 
