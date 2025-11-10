@@ -72,21 +72,23 @@ repos:
         exclude: ^(geojson/|tests/)
 
   # Pytest - Executa os testes
+  # NOTA: Execute 'make test' antes de commitar se este hook falhar
   - repo: local
     hooks:
       - id: pytest
-        name: Pytest - Testes Unitários
-        entry: bash -c 'python -m pytest'
+        name: Pytest - Testes Unitários (use 'make test' se falhar)
+        entry: python
         language: system
         pass_filenames: false
         always_run: true
         args: [
+          "-m", "pytest",
           "-v",
           "--cov=src/geodata_br_mcp",
           "--cov-report=term-missing:skip-covered",
-          "--cov-fail-under=80",  # Requer 80% de cobertura
+          "--cov-fail-under=80",
         ]
-        stages: [pre-commit]
+        stages: [commit]
 
 # Configuração global
 default_language_version:
