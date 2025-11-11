@@ -18,7 +18,7 @@ BACKUP_DIR="/opt/backups"
 USER="geodata-mcp"
 
 # Verificar se está rodando como root ou sudo
-if [ "$EUID" -ne 0 ]; then 
+if [ "$EUID" -ne 0 ]; then
    echo -e "${RED}❌ Execute com sudo${NC}"
    exit 1
 fi
@@ -81,4 +81,3 @@ echo "  Status:       sudo systemctl status geodata-mcp"
 echo "  Parar:        sudo systemctl stop geodata-mcp"
 echo "  Reiniciar:    sudo systemctl restart geodata-mcp"
 echo "  Restaurar:    tar -xzf $BACKUP_FILE -C /"
-

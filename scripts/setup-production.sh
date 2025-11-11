@@ -18,7 +18,7 @@ LOG_DIR="/var/log/geodata-br"
 USER="geodata-mcp"
 
 # Verificar se está rodando como root
-if [ "$EUID" -ne 0 ]; then 
+if [ "$EUID" -ne 0 ]; then
    echo -e "${RED}❌ Execute com sudo${NC}"
    exit 1
 fi

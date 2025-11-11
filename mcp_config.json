@@ -3,11 +3,11 @@
     "geodata-br": {
       "command": "python",
       "args": [
-        "-m",
-        "src.geodata_br_mcp.server"
+        "main.py"
       ],
+      "cwd": "/Users/74393/Documents/estudos/geodata-mcp/geodata-study",
       "env": {
-        "GEODATA_BR_PATH": "/Users/74393/Documents/estudos/geodata-br"
+        "GEODATA_BR_PATH": "/Users/74393/Documents/estudos/geodata-mcp/geodata-study"
       }
     }
   }

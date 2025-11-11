@@ -140,4 +140,3 @@ Os seguintes arquivos/diretórios são automaticamente ignorados:
 - **Problemas?** Veja [PRECOMMIT.md](PRECOMMIT.md)
 - **Erros do CI?** Veja [CI_FIXES.md](CI_FIXES.md)
 - **Comandos?** Execute `make help`
-
